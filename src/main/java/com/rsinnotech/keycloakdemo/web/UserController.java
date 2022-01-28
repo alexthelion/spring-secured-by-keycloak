@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.Collections;
 import java.util.Map;
 
@@ -18,7 +19,14 @@ public class UserController {
     @GetMapping(value = "/api/test/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @CrossOrigin
     @PreAuthorize("hasRole('admin')")
-    public Map<String, String> getUserName(@PathVariable Long id, @AuthenticationPrincipal Jwt jwt) {
+    public Map<String, String> testApi(@PathVariable Long id, Principal principal) {
+        return Collections.singletonMap("response", "API access granted");
+    }
+
+    @GetMapping(value = "/api/forbiddenTest/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @CrossOrigin
+    @PreAuthorize("hasRole('dummy_role')")
+    public Map<String, String> forbiddenTest(@PathVariable Long id, Principal principal) {
         return Collections.singletonMap("response", "API access granted");
     }
 
