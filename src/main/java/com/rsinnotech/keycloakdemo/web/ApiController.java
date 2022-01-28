@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.Map;
 
 @RestController
-public class UserController {
+public class ApiController {
 
     @GetMapping(value = "/api/test/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @CrossOrigin
