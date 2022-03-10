@@ -50,7 +50,7 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 /*                .antMatchers("/customers*", "/users/*")
                 .hasRole("admin")*/
                 .anyRequest()
-                .permitAll();
+                .permitAll().and().csrf().disable();
     }
 
     @Bean
